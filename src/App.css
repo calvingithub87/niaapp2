@@ -1,0 +1,628 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  font-family: 'BoschSansCHS-Regular';
+
+  --nia-color-ba04ae : #BA04AE;
+  --nia-color-en0100 : #EB0100;
+  --nia-fw-rg: 'BoschSansCHS-Regular';
+  --nia-fw-bd: 'BoschSansCHS-Bold';
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.nia-fw-rg{
+  font-family: var(--nia-fw-rg);
+}
+.nia-fw-bd{
+  font-family: var(--nia-fw-bd);
+}
+
+.w-100pr{
+  width: 100%;
+}
+.h-100pr{
+  height: 100%;
+}
+
+.w-100px{
+  width: 100px;
+}
+.h-100px{
+  height: 100px;
+}
+
+.nia-color-BA04AE{
+  color: var(--nia-color-ba04ae);
+}
+
+.nia-color-EB0100{
+  color: var(--nia-color-en0100);
+}
+
+
+
+
+.main{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* NIA HEADER */
+
+.nia-header{
+  height: 60px;
+  z-index: 1;
+  background-color: white;
+  box-shadow: 0px 2px 3px rgba(0,0,0,0.2);
+  background-image: url('/images/bosch-line.png');
+  background-size: 100% 8px;
+  background-repeat: no-repeat;
+  padding: 8px 8px 0px 8px;
+  flex-shrink: 0;
+}
+
+.nia-header-container{
+  display: flex;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.nia-brand-name{
+  width: 160px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+  line-height: 2rem;
+  font-family: 'BoschSansCHS-Bold';
+  font-size: 1rem;
+}
+
+.nia-brand-name img{
+  height: 1.25rem;
+}
+
+.nia-brand-separator{
+  height: 20px;
+  width: 1px;
+  border-right: 2px solid rgba(0, 0, 0, 0.2);
+  display: block;
+}
+
+.nia-brand-title{
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-family: var(--nia-fw-bd);
+}
+
+.nia-brand-title span{
+  display: none;
+}
+
+.nia-profile{
+  width: 200px;
+  height: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  position: relative;
+  font-size: .65rem;
+  line-height: .65rem;
+  gap: .5rem;
+}
+
+.nia-profile img{
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.nia-profile span.nia-welcome-text{
+  width: 132px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.nia-profile span.nia-separator{
+  height: 20px;
+  border-right: 2px solid rgba(0, 0, 0, 0.2);
+  width: 1px;
+}
+
+.nia-profile .nia-logout{
+  color: #EB0100;
+  cursor: pointer;
+}
+
+.nia-profile .nia-logout:hover{
+  text-decoration: underline;
+}
+
+/* NIA BODY */
+
+@media screen and (min-width: 601px) {
+  .nia-header{
+    padding: 8px 32px 0px 32px;
+  }
+
+  .nia-toggleSliderbtn{
+    display: none;
+  }
+
+  .nia-brand-name{
+    width: 230px;
+    gap: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .nia-brand-name img{
+    height: 1.5rem;
+  }
+
+  .nia-brand-title{
+    font-size: 1rem;
+  }
+
+  .nia-brand-title span{
+    display: block;
+  }
+
+  .nia-profile{
+    width: 230px;
+    font-size: .75rem;
+    line-height: .75rem;
+  }
+
+  .nia-profile img{
+    width: 32px;
+    height: 32px;
+  }
+
+  .nia-profile span.nia-welcome-text{
+    width: 170px;
+  }
+}
+
+/* NIA CONTENT */
+.nia-body{
+  flex-grow: 1;
+  background-color: white;
+  display: flex;
+  z-index: 0;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.nia-body-left-panel{
+  width: 100%;
+  max-width: 250px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  box-shadow: 0px -1px 10px 2px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  transition: all 1s;
+  display: none;
+}
+
+.nia-show-left-panel{
+  display: block;
+}
+
+.nia-body-right-panel{
+  flex-grow: 1;
+  height: 100%;
+  background-color: #ffffff;
+  z-index: 0;
+}
+
+@media screen and (min-width: 601px) {
+  .nia-body{
+  }
+
+  .nia-body-left-panel{
+    display: block;
+    width: 300px;
+    max-width: 30%;
+    position: relative;
+    flex-shrink: 0;
+  }
+}
+
+/* NIA LEFT PANEL */
+.nia-left-panel-container{
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  background-color: #007BC0;
+}
+
+.nia-left-panel-list{
+  padding: 16px 16px 0px 16px;
+  font-size: 14px;
+}
+
+.nia-left-panel-list ul{
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.nia-left-panel-list ul li{
+  padding: 16px;
+  border-bottom: 1px solid #1D64A8;
+  color: #E0E2E5;
+  cursor: pointer;
+}
+
+.nia-left-panel-list ul li:last-child{
+  border-bottom: 0px solid #1D64A8;
+}
+
+.nia-left-panel-list ul li:hover, .nia-left-panel-list ul li.active{
+  background-color: #1D64A8;
+  width: 300px;
+}
+
+/* NIA RIGHt PANEL */
+.nia-right-panel-container{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.nia-right-panel-header{
+  height: 40px;
+  padding-inline: 8px;
+  line-height: 40px;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.03);
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nia-right-panel-header-text{
+  color: #1D64A8;
+  font-family: var(--nia-fw-bd);
+}
+
+.nia-right-panel-content{
+  flex-grow: 1;
+  margin-inline: 8px;
+  position: relative;
+  z-index: 0;
+}
+
+.nia-right-panel-form{
+  padding: 16px 8px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.05);
+}
+
+@media screen and (min-width: 601px) {
+  .nia-right-panel-header{
+    height: 60px;
+    padding-inline: 32px;
+    line-height: 60px;
+  }
+  
+  .nia-right-panel-content{
+    flex-grow: 1;
+    margin-inline: 32px;
+  }
+  
+  .nia-right-panel-form{
+    padding: 32px;
+  }
+}
+
+/* CHAT CONTAINER */
+
+.nia-chat-conatiner{
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding-block: 16px;
+  font-size: 14px;
+}
+
+.nia-chat-form-container{
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.nia-chat-btn{
+  height: 24px;
+  padding: 0px 16px;
+  display: block;
+  cursor: pointer;
+  border: 0px;
+  border-radius: 20px;
+  background-color: #E0E2E5;
+  color: #007BC0;
+  line-height: 24px;
+  font-size: 12px;
+}
+
+
+
+.nia-chat-btn:hover, .nia-chat-btn:focus{
+  background-color: #007BC0;
+  color: #FFFFFF;
+}
+
+.nia-chat-input-container{
+  flex-grow: 1;
+  width: 100%;
+  max-width: 900px;
+  position: relative;
+}
+
+.nia-chat-btn-container{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 4px;
+  position: absolute;
+  right: 16px;
+  bottom: 4px;
+  z-index: 1;
+}
+
+.nia-chat-btn-container .nia-chat-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 6px;
+  background-color: unset;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.nia-chat-btn-container .nia-chat-btn:hover{
+  background-color: #007BC0;
+}
+
+.nia-chat-btn-container .nia-chat-btn img{
+  height: 20px;
+  width: 20px;
+  filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(190deg) brightness(90%) contrast(100%);
+}
+
+.nia-chat-btn-container .nia-chat-btn:hover img{
+  filter: invert(100%) sepia(28%) saturate(590%) hue-rotate(180deg) brightness(89%) contrast(84%);
+}
+
+.nia-chat-input-container label{
+  background-color: rgba(0, 0, 0, 0.03);
+  position: relative;
+  min-height: 40px;
+  border-radius: 20px;
+  padding: 0px 16px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  z-index: 0;
+}
+
+.nia-chat-input-container.focused label{
+  padding: 16px 16px;
+}
+
+.nia-input-text{
+  line-height: 18px;
+  padding: 0px;
+  border: 0px;
+  outline: none;
+  background-color: transparent;
+  cursor: text;
+  color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  resize: none;
+}
+
+@media screen and (min-width: 601px) {
+  .nia-chat-btn{
+    height: 32px;
+    line-height: 32px;
+    font-size: 16px;
+  }
+
+  .nia-chat-form-container{
+    gap: 1.5rem;
+    flex-direction: row;
+    align-items: end;
+  }
+}
+
+
+/* CHAT LIST */
+.nia-chat-list{
+  width: 100%;
+}
+
+.nia-chat-list-item{
+  width: 100%;
+  max-width: 900px;
+  margin: 0px auto;
+  padding: 16px 0px;
+  display: grid;
+}
+
+.nia-chat-list-q{
+  display: flex;
+  justify-self: right;
+  background-color: rgba(0, 0, 0, 0.03);
+  padding: 0px 16px 0px 16px;
+  border-radius: 20px;
+  justify-content: end;
+  position: relative;
+  flex-wrap: nowrap;
+  font-size: 14px;
+  color: rgba(0,0,0,8);
+  gap: 16px;
+  margin-left: 50px;
+  z-index: 1;
+}
+
+.nia-chat-action{
+  height: 32px;
+  width: 32px;
+  position: relative;
+}
+
+.nia-chat-action .nia-chat-action-btn{
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nia-chat-action .nia-chat-action-btn:hover{
+  background-color: rgba(0, 0, 0, 0.07);
+}
+
+.nia-chat-action-btn img{
+  height: 16px;
+  width: 16px;
+}
+
+.nia-chat-action-list{
+  position: absolute;
+  top: 32px;
+  right: 12px;
+  background-color: #ededed;
+  border-radius: 20px 0px 20px 20px;
+  display: none;
+}
+
+.nia-chat-action:hover .nia-chat-action-list{
+  display: block;
+}
+
+.nia-chat-action-list ul{
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.nia-chat-action-list ul li{
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  gap: 8px;
+  line-height: 16px;
+  align-items: center;
+}
+
+.nia-chat-action-list ul li img{
+  height: 16px;
+  width: 16px;
+}
+
+.nia-chat-action-list ul li:first-child{
+  border-radius: 20px 0px 0px 0px;
+}
+.nia-chat-action-list ul li:last-child{
+  border-radius: 0px 0px 20px 20px;
+}
+
+.nia-chat-action-list ul li:hover{
+  background-color: #f4f4f4;
+  color: #007BC0;
+}
+
+.nia-chat-action-list ul li:hover img{
+  filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(190deg) brightness(90%) contrast(100%);
+}
+
+.nia-chat-question{
+  line-height: 18px;
+  padding: 8px;
+}
+
+.nia-chat-list-a{
+  padding: 32px 0px;
+  margin-right: 50px;
+  display: flex;
+  justify-self: start;
+  align-items: start;
+  gap: 16px;
+  flex-wrap: nowrap;
+  z-index: 0;
+}
+
+.nia-chat-profile{
+  height: 32px;
+  width: 32px;
+  padding: 8px;
+  line-height: 32px;
+  border: 1px solid #1D64A8;
+  background-color: #007BC0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#FFFFFF;
+  border-radius: 16px 0px 16px 16px;
+  font-size: 10px;
+}
+
+.nia-chat-answer, .nia-chat-question{
+  color: #646464;
+}
+
+.nia-chat-attachment{
+  position: absolute;
+  height: 32px;
+  width: 32px;
+  opacity: 0;
+  filter: opacity(0);
+  cursor: pointer;
+}
+
+.nia-chat-attachment ~ img{
+  pointer-events: none;
+  cursor: pointer;
+}

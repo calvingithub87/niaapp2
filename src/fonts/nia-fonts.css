@@ -1,0 +1,14 @@
+/* fonts.css */
+@font-face {
+    font-family: 'BoschSansCHS-Bold';
+    src: url('./fonts-ttf/BoschSansCHS-Bold-v2_300.ttf');
+    src: url('./fonts-woff2/BoschSansCHS-Bold-v2_300.woff2') format('woff2'),
+         url('./fonts-woff/BoschSansCHS-Bold-v2_300.woff') format('woff');
+  }
+  
+  @font-face {
+    font-family: 'BoschSansCHS-Regular';
+    src: url('./fonts-ttf/BoschSansCHS-Regular-v2_300.ttf');
+    src: url('./fonts-woff2/BoschSansCHS-Regular-v2_300.woff2') format('woff2'),
+         url('./fonts-woff/BoschSansCHS-Regular-v2_300.woff') format('woff');
+  }
