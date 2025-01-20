@@ -4,6 +4,7 @@ const BASE_URL ='https://customgptapp.azurewebsites.net/';
 ///const BASE_URL ="http://localhost:8000/";
 
 axios.defaults.baseURL = BASE_URL;
+axios.defaults.withCredentials = true; // Enables cookies for all requests
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
