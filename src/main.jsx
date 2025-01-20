@@ -27,7 +27,7 @@ const msalConfiguration_azure = {
       authority: "https://login.microsoftonline.com/6e50f04c-22d7-4b8e-8fa2-08f577dfa5aa", // Replace with your Azure AD tenant ID
       // the only mandatory field in this object, uniquely identifies your app
       // here you'll add the other fields that you might need based on the Azure portal settings
-      redirectUri: "https://niaapp-eaakgacxa4hsa3b4.australiaeast-01.azurewebsites.net/" // Register as a SPA. This must match the redirect uri in Azure App Registration
+      redirectUri: "https://niaapp2.azurewebsites.net" // Register as a SPA. This must match the redirect uri in Azure App Registration
   }
 };
 
