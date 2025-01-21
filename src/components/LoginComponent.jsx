@@ -5,6 +5,7 @@ const LoginComponent = () => {
   const [loading, setLoading] = useState(true); // State to show loading UI
   const [error, setError] = useState(null); // State to capture any errors
   const { instance, accounts } = useMsal();
+  const client_id = "5803bd0c-30b8-4f38-9327-ac6642e75245";
 
   useEffect(() => {
     const handleLogin = async () => {
@@ -15,7 +16,7 @@ const LoginComponent = () => {
         } else {
           // If an account exists, try to acquire token silently
           const tokenResponse = await instance.acquireTokenSilent({
-            scopes: ["api://53ddbbab-4e8b-4327-98d1-35c42d3329b3/access_as_user"], // Replace with your Azure AD scope
+            scopes: ["api://"+client_id+"/access_as_user"], // Replace with your Azure AD scope
             account: accounts[0],
           });
           console.log("Access Token:", tokenResponse.accessToken); // Save token for API calls
@@ -36,7 +37,7 @@ const LoginComponent = () => {
         if (response) {
           // If a response exists (user successfully logged in), acquire the token
           const tokenResponse = await instance.acquireTokenSilent({
-            scopes: ["api://53ddbbab-4e8b-4327-98d1-35c42d3329b3/access_as_user"], // Your Azure AD scope
+            scopes: ["api://"+client_id+"/access_as_user"], // Your Azure AD scope
             account: response.account,
           });
           console.log("Access Token after redirect:", tokenResponse.accessToken);

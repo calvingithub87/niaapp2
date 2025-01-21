@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useMsal } from "@azure/msal-react";
 
-const BASE_URL = "http://localhost:8000/"; // Update this to your actual API base URL
+//const BASE_URL = "http://localhost:8000/"; // Update this to your actual API base URL
+const BASE_URL = "https://customgptapp.azurewebsites.net/"
+const client_id = "5803bd0c-30b8-4f38-9327-ac6642e75245";
 
 axios.defaults.baseURL = BASE_URL;
 axios.defaults.withCredentials = true; // Enables cookies for all requests
@@ -14,7 +16,7 @@ const refreshToken = async (msalInstance, account) => {
   try {
     // Use MSAL to acquire a new token silently
     const tokenResponse = await msalInstance.acquireTokenSilent({
-      scopes: ["api://53ddbbab-4e8b-4327-98d1-35c42d3329b3/access_as_user"], // Replace with your actual scope
+      scopes: ["api://"+client_id+"/access_as_user"], // Replace with your actual scope
       account,
     });
 
@@ -129,7 +131,7 @@ const chatServices = {
   },
 
   async postChat(formData, gpt_id, gpt_name) {
-    gpt_id = "6788af65a27d09ae127f3cea";
+    gpt_id = "6787c2f96368ac3ad473ad4e";
     gpt_name = "Nia";
     return await axiosInstance.post(
       `chat/${gpt_id}/${gpt_name}`,
@@ -139,7 +141,7 @@ const chatServices = {
   },
 
   async chatHistory(gpt_id, gpt_name) {
-    gpt_id = "6788af65a27d09ae127f3cea";
+    gpt_id = "6787c2f96368ac3ad473ad4e";
     gpt_name = "Nia";
     return await axiosInstance.get(
       `chat_history/${gpt_id}/${gpt_name}`,
@@ -148,7 +150,7 @@ const chatServices = {
   },
 
   async clearChathistory(gpt_id, gpt_name) {
-    gpt_id = "6788af65a27d09ae127f3cea";
+    gpt_id = "6787c2f96368ac3ad473ad4e";
     gpt_name = "Nia";
     return await axiosInstance.put(
       `clear_chat_history/${gpt_id}/${gpt_name}`,
