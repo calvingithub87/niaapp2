@@ -2,7 +2,7 @@ import axios from "axios";
 import { useMsal } from "@azure/msal-react";
 
 //const BASE_URL = "http://localhost:8000/"; // Update this to your actual API base URL
-const BASE_URL = "https://customgptapp.azurewebsites.net/"
+const BASE_URL = "https://customgptapp2.azurewebsites.net/"
 const client_id = "5803bd0c-30b8-4f38-9327-ac6642e75245";
 
 axios.defaults.baseURL = BASE_URL;
