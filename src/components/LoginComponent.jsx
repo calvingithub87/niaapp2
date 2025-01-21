@@ -7,19 +7,18 @@ const LoginComponent = () => {
   const { instance, accounts } = useMsal();
 
   useEffect(() => {
-    const checkLogin = async () => {
+    const handleLogin = async () => {
       try {
-        console.log("accounts.length :" + accounts.length);
         if (accounts.length === 0) {
           // No active account, trigger login redirect
           await instance.loginRedirect();
         } else {
-          // Silent token acquisition for logged-in user
+          // If an account exists, try to acquire token silently
           const tokenResponse = await instance.acquireTokenSilent({
             scopes: ["api://53ddbbab-4e8b-4327-98d1-35c42d3329b3/access_as_user"], // Replace with your Azure AD scope
             account: accounts[0],
           });
-          console.log("Token saved to sessionStorage:", tokenResponse.accessToken); // Save token for API calls
+          console.log("Access Token:", tokenResponse.accessToken); // Save token for API calls
           sessionStorage.setItem("auth_token", tokenResponse.accessToken); // Save token
         }
       } catch (err) {
@@ -30,7 +29,27 @@ const LoginComponent = () => {
       }
     };
 
-    checkLogin();
+    // Handle redirect response if the user was redirected back to the app after login
+    const handleRedirectCallback = async () => {
+      try {
+        const response = await instance.handleRedirectPromise();
+        if (response) {
+          // If a response exists (user successfully logged in), acquire the token
+          const tokenResponse = await instance.acquireTokenSilent({
+            scopes: ["api://53ddbbab-4e8b-4327-98d1-35c42d3329b3/access_as_user"], // Your Azure AD scope
+            account: response.account,
+          });
+          console.log("Access Token after redirect:", tokenResponse.accessToken);
+          sessionStorage.setItem("auth_token", tokenResponse.accessToken); // Save token
+        }
+      } catch (err) {
+        console.error("Error handling redirect callback:", err);
+      }
+    };
+
+    handleLogin();
+    handleRedirectCallback();
+
   }, [instance, accounts]);
 
   if (loading) {
